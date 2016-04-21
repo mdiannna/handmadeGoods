@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_bootstrap import Bootstrap
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -6,6 +7,9 @@ from flask.ext.login import LoginManager
 
 
 app = Flask(__name__)
+app.secret_key = "secret"
+
+Bootstrap(app)
 
 
 # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(

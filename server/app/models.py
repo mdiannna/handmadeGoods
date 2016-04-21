@@ -21,5 +21,5 @@ class Users(db.Model):
 	center_description = db.Column(db.Text)
 
 	item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
-	items = db.relationship('Items', 
+	items = db.relationship('Items',
 		backref=db.backref('users', lazy='dynamic', order_by= id))

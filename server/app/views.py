@@ -7,6 +7,7 @@ from flask.ext.login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from flask import Flask, request
+from forms import addProductForm
 
 
 @login_manager.user_loader
@@ -31,9 +32,31 @@ def hello_server():
     return "nothing"
 
 
-@app.route('/add_product')
-def add_product():
-    print("add product")
+@app.route('/items')
+def items():
+    items = Items.query.all()
+    return render_template('items.html', items=items)
+
+@app.route('/view_item/<int:item_id>', methods=['GET', 'POST'])
+def view_item(item_id):
+    item = Items.query.get(item_id)
+    return render_template('viewitem.html', item=item)
+
+
+
+@app.route('/item/add', methods=['GET', 'POST'])
+def add_item():
+    form = addProductForm(request.form, csrf_enabled=True)
+    item_id = 1
+    if request.method == 'POST' :
+		item = Items(name=form.name.data, photo=form.photo.data, price=form.price.data, item_description=form.item_description.data);
+		db.session.add(item )
+		db.session.commit()
+		item_id = item.id
+		return redirect('view_item/' + str(item_id))
+    print("add item:")
+    return render_template('additem.html', form=form)
+
 
 @app.route('/getvalue/', methods=['GET', 'POST'])
 def get_value():
