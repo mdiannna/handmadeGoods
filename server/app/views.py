@@ -49,8 +49,9 @@ def add_item():
     form = addProductForm(request.form, csrf_enabled=True)
     item_id = 1
     if request.method == 'POST' :
+
 		item = Items(name=form.name.data, photo=form.photo.data, price=form.price.data, item_description=form.item_description.data);
-		if(item):
+		if(item and form.name.data and form.photo.data and form.price.data and form.item_description.data):
 		    db.session.add(item )
 		    db.session.commit()
 		    item_id = item.id
@@ -108,3 +109,29 @@ def store_value():
 
     return json.dumps(['STORED', tag, value])
 
+
+@app.route('/buy_item/', methods=['GET', 'POST'])
+def buy_item():
+    print(request.values)
+    if request.method == 'POST':
+        return request.values
+    return '/'
+    return ""
+
+
+@app.route('/delete/<int:item_id>', methods = ['GET', 'POST'])
+def delete_item(item_id):
+	item = Items.query.get(item_id)
+	if request.method == 'POST':
+		db.session.delete(item)
+		db.session.commit()
+		return redirect('/')
+	return redirect("/")
+
+@app.route('/deleteall', methods = ['GET', 'POST'])
+def delete_event():
+    items = Items.query.get.all()
+    db.session.delete(items)
+    db.session.commit()
+    return "deleted all database"
+    # return redirect('/')

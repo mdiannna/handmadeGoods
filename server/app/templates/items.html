@@ -21,20 +21,27 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-.bg1{
-    background:white;
-    width:90%;
-    height:30%;
-    display:inline;
-}
+
 section {
     margin:5% 5% 5% 5%;
     background-color:white;
     float:center;
     width:90%;
-    height:30%;
+    height:100%;
     padding:10px;
     display:block;
+}
+.bgw{
+    margin:5% 5% 5% 5%;
+    background-color:white;
+    float:center;
+    padding:10px;
+    display:block;
+
+}
+.img1{
+    width:90%;
+    /*height:90%;*/
 }
 </style>
 {% endblock metas %}
@@ -42,17 +49,25 @@ section {
 {% endblock %}
 
 {% block content %}
-<section>
+    <section>
+    <div class="row">
     {% for item in items %}
-    <div row>
-        <div class="col=xs4">
-            <strong>{{item.name}}</strong> -
-        </div>
-        <div class="col=xs4">
-            {{item.price}} lei
-        <img src="{{item.photo}}">
-        <hr>
-    </div>
+    {% if item  %}
+        <a href='http://mdiana.pythonanywhere.com/view_item/{{item.id}}'>
+            <div class="col-xs-6 col-md-6">
+                <strong>{{item.name}}</strong>
+                <br>
+                {{item.price}} lei
+                <br>
+                <img src="{{item.photo}}" class="img1">
+                <hr>
+            </div>
+        </a>
+    {% endif %}
+
     {% endfor %}
-</section>
+    </div>
+    </section>
+
+
 {% endblock %}
