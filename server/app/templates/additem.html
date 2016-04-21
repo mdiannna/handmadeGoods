@@ -1,42 +1,77 @@
+{% extends 'bootstrap/base.html' %}
 {% block head %}
+    <!--BOotstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 {% block metas %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+body {
+  background: url(/static/bg.jpg) center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg1{
+    background:white;
+    width:90%;
+    height:30%;
+    display:inline;
+}
+section {
+    margin:5% 5% 5% 5%;
+    background-color:white;
+    float:center;
+    width:90%;
+    height:30%;
+    padding:10px;
+    display:block;
+}
+</style>
 {% endblock metas %}
 
 {% endblock %}
 
 {% block content %}
-	<form class = "form " method = "post" action="/item/add">
-		<div class="form-group input">
-			<h2>Adaugă poze la evenimentul {{event_id}}</h2>
+<section>
+	<form class = "form" method = "post" action="/item/add">
+		<div class="form-group input"  align="center">
+			<h2>Add product</h2>
 		</div>
 
 		<div class="form-group input">
-			{{form.name.label}} </br> </br>
-			{{form.name}}
+			{{form.name.label}}<br>
+			{{form.name}}<br>
 		</div>
 
 		<div class="form-group input">
-			{{form.photo.label}} </br> </br>
-			{{form.photo}}
+			{{form.photo.label}}<br>
+			{{form.photo}}<br>
 		</div>
 
 		<div class="form-group input">
-			{{form.price.label}} </br> </br>
-			{{form.price}}
+			{{form.price.label}}<br>
+			{{form.price}}<br>
 		</div>
 
 		<div class="form-group input">
-			{{form.item_description.label}} </br> </br>
-			{{form.item_description}}
+			{{form.item_description.label}}<br>
+			{{form.item_description}}<br>
 		</div>
 
 		<div class="form-group btn">
-			{{form.submit.label}}
 			{{form.submit(class_='form-control', placeholder=form.submit.label.text) }}
 		</div>
 	</form>
+</section>
 {% endblock %}
 

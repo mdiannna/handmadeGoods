@@ -1,23 +1,58 @@
+{% extends 'bootstrap/base.html' %}
 {% block head %}
+    <!--BOotstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 {% block metas %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+body {
+  background: url(/static/bg.jpg) center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.bg1{
+    background:white;
+    width:90%;
+    height:30%;
+    display:inline;
+}
+section {
+    margin:5% 5% 5% 5%;
+    background-color:white;
+    float:center;
+    width:90%;
+    height:30%;
+    padding:10px;
+    display:block;
+}
+</style>
 {% endblock metas %}
 
 {% endblock %}
 
-
 {% block content %}
-
+<section>
     {% for item in items %}
-    <div>
-        <p>{{item.name}}</p>
+    <div row>
+        <div class="col=xs4">
+            <strong>{{item.name}}</strong> -
+        </div>
+        <div class="col=xs4">
+            {{item.price}} lei
         <img src="{{item.photo}}">
-        <p>{{item.price}}</p>
-        <p>{{item.item_description}}</p>
         <hr>
     </div>
     {% endfor %}
-
+</section>
 {% endblock %}

@@ -32,7 +32,13 @@ section {
     background-color:white;
     float:center;
     width:90%;
-    height:30%;
+    height:90%;
+    padding:5%;
+}
+
+.img1{
+    width:90%;
+    /*height:90%;*/
 }
 </style>
 {% endblock metas %}
@@ -43,11 +49,21 @@ section {
 <body>
     <section>
         <div class="row bg1">
-            <div class="col-md-4 col-sm-3">
-                View one item {{item.name}}
+            <!--<div class="col-md-4 col-sm-3" align="center">-->
+            <!--    <h2>{{item.name}}</h2>-->
+            <!--</div>-->
+            <div>
+                <h2>{{item.name}}</h2>
             </div>
-            <div class="col-md-4 col-sm-3">
-                View one item {{item.name}}
+            <div align="right">
+                Price: {{item.price}} lei
+            </div>
+            <div align=center>
+                <img src='{{item.photo}}' class="img1">
+            </div>
+            <div>
+                <h3>Product description:</h3>
+                {{item.item_description}}
             </div>
         </div>
     </section>

@@ -50,10 +50,11 @@ def add_item():
     item_id = 1
     if request.method == 'POST' :
 		item = Items(name=form.name.data, photo=form.photo.data, price=form.price.data, item_description=form.item_description.data);
-		db.session.add(item )
-		db.session.commit()
-		item_id = item.id
-		return redirect('view_item/' + str(item_id))
+		if(item):
+		    db.session.add(item )
+		    db.session.commit()
+		    item_id = item.id
+		    return redirect('view_item/' + str(item_id))
     print("add item:")
     return render_template('additem.html', form=form)
 
