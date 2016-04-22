@@ -49,12 +49,13 @@ section {
 {% endblock %}
 
 {% block content %}
-    <section>
-    <div class="row">
+     <section>
+    <strong><h1 align="center">Items</h1></strong>
     {% for item in items %}
     {% if item  %}
+    <div class="row" align="center">
         <a href='http://mdiana.pythonanywhere.com/view_item/{{item.id}}'>
-            <div class="col-xs-6 col-md-6">
+            <div class="col-xs-12 col-md-12">
                 <strong>{{item.name}}</strong>
                 <br>
                 {{item.price}} lei
@@ -63,10 +64,11 @@ section {
                 <hr>
             </div>
         </a>
+    </div>
     {% endif %}
 
     {% endfor %}
-    </div>
+
     </section>
 
 
